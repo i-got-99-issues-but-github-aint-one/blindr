@@ -22,7 +22,7 @@ export default class Matches extends Component {
 				key={`user-${i}`}
 				styles={styles.row}
 			>
-				<Image />
+				<Image source={require(`./${user.images[0]}`)} />
 				<Text>{'blah'}</Text>
 			</View>
 		));
