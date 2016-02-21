@@ -13,7 +13,7 @@ export default class Matches extends Component {
 		super(props);
 
 		// todo: generate users
-		this.users = UserGenerator();
+		this.users = [];
 	}
 
 	render() {
