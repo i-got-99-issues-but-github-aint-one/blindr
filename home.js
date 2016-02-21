@@ -10,7 +10,7 @@ import Button from 'react-native-button';
 
 import {matchesRoute} from './router';
 import SwipeableView from './swipeable-view';
-import UserGenerator from './user-generator';
+import {genUser} from './user-generator';
 
 export default class Home extends Component {
 	componentWillMount() {
@@ -18,7 +18,7 @@ export default class Home extends Component {
 	}
 
 	_loadNextUser() {
-		const user = UserGenerator();
+		const user = genUser();
 
 		this.setState({ user });
 	}
@@ -45,7 +45,7 @@ export default class Home extends Component {
 			<Image
 				key={`image-${i}`}
 				resizeMode='contain'
-				source={{uri}}
+				source={uri}
 				style={styles.image}
 			/>
 		));
@@ -66,7 +66,9 @@ export default class Home extends Component {
 					<Text style={styles.text}>
 						{displayName}
 					</Text>
-					{[...images]}
+					<View style={styles.images}>
+						{[...images]}
+					</View>
 				</SwipeableView>
 			</View>
 		);
@@ -84,9 +86,14 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+	images: {
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		width: 300,
+	},
 	image: {
 		width: 120,
-		height: 200,
+		height: 180,
 	},
 	text: {
 		color: 'white',

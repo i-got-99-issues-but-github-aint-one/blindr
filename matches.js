@@ -6,24 +6,40 @@ import React, {
 	View,
 } from 'react-native';
 
-import UserGenerator from './user-generator';
+import {genUser, genImage} from './user-generator';
+
+function gen() {
+	const user = genUser();
+	user.image = genImage();
+	return user;
+}
 
 export default class Matches extends Component {
 	constructor(props) {
 		super(props);
 
 		// todo: generate users
-		this.users = [];
+		this.users = [
+			gen(),
+			gen(),
+			gen(),
+			gen(),
+			gen(),
+			gen(),
+			gen(),
+			gen(),
+			gen(),
+		];
 	}
 
 	render() {
 		const matches = this.users.map((user, i) => (
 			<View
 				key={`user-${i}`}
-				styles={styles.row}
+				style={styles.row}
 			>
-				<Image source={require(`./${user.images[0]}`)} />
-				<Text>{'blah'}</Text>
+				<Image source={user.image} />
+				<Text>{user.name}</Text>
 			</View>
 		));
 
@@ -45,5 +61,6 @@ const styles = StyleSheet.create({
 	row: {
 		justifyContent: 'center',
 		alignItems: 'center',
+		height: 200,
 	},
 });
