@@ -6,6 +6,8 @@ import React, {
 	View,
 } from 'react-native';
 
+import Button from 'react-native-button';
+
 import {matchesRoute} from './router';
 import SwipeableView from './swipeable-view';
 import UserGenerator from './user-generator';
@@ -50,8 +52,15 @@ export default class Home extends Component {
 
 		return (
 			<View style={styles.container}>
+				<Button
+					onPress={() => this._matchesScreen()}
+					style={{fontSize: 20, color: 'white', textDecorationLine: 'underline'}}
+				>
+					{'Your Matches'}
+				</Button>
+				<View style={{height: 50}} />
 				<SwipeableView
-					onSwipeComplete={this._swiped.bind(this)}
+					onSwipeComplete={() => this._swiped()}
 					style={styles.card}
 				>
 					<Text style={styles.text}>
@@ -76,8 +85,8 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	image: {
-		width: 320,
-		height: 300,
+		width: 120,
+		height: 200,
 	},
 	text: {
 		color: 'white',
