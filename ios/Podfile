@@ -1,0 +1,11 @@
+platform :ios, '7.0'
+inhibit_all_warnings!
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+pod 'React', path: '../node_modules/react-native', subspecs: [
+	'RCTImage',
+	'RCTNetwork',
+	'RCTText',
+	'RCTWebSocket',
+]
